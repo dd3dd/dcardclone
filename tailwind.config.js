@@ -20,7 +20,8 @@ module.exports = {
         'search': '#005585',
         'downloadapp': '#3397CF',
         'darkblue': '#002032',
-        'followbtn': '#F0F1F2'
+        'followbtn': '#F0F1F2',
+        'commentgray': '#F2F3F4'
 
       },
       textColor: {
@@ -36,6 +37,7 @@ module.exports = {
       width: {
         'modalWidth': '722px',
         'modalPost': '602px',
+        'commentinput': '442px',
       },
       minWidth: {
         'min25': '100px',
