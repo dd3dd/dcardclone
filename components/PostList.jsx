@@ -33,7 +33,7 @@ export default function PostList() {
     }]
     return (
         <div>
-            {postList.map(v => <Post id={v.id} userimg={v.userimg} board={v.board} name={v.name} date={v.date}
+            {postList.map(v => <Post key={v.id} id={v.id} userimg={v.userimg} board={v.board} name={v.name} date={v.date}
                 title={v.title} content={v.content} loveCount={v.loveCount}
                 commentCount={v.commentCount} />)}
         </div>

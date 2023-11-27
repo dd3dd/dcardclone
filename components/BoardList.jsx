@@ -20,7 +20,7 @@ export default function BoardList() {
     return (
         <div className="h-boardListHeight overflow-auto">
             <p className="pl-4 my-4 text-sm text-sidebargray">追蹤的看板</p>
-            {boardList.map((v, i) => <Board title={v} img={boardImg[i]} />)}
+            {boardList.map((v, i) => <Board key={i} title={v} img={boardImg[i]} />)}
         </div>
     )
 }
