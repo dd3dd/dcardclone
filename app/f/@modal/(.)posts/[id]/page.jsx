@@ -11,8 +11,9 @@ import { MdArrowCircleDown } from "react-icons/md";
 import { MdArrowCircleUp } from "react-icons/md";
 export default function Page({ params }) {
     const { id } = params;
+
     return (
-        <PostModal>
+        <PostModal >
             <div className="h-8"></div>
             <div className="">
                 <div className="w-modalPost mx-auto">

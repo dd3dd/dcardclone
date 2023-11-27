@@ -1,10 +1,11 @@
 'use client'
 import { useCallback, useRef, useEffect, MouseEventHandler } from 'react'
 import { useRouter } from 'next/navigation'
-
+import { RxCross2 } from "react-icons/rx";
 export default function PostModal({ children }) {
     const overlay = useRef(null)
     const wrapper = useRef(null)
+    const backbtn = useRef(null)
     const router = useRouter()
 
     const onDismiss = useCallback(() => {
@@ -13,7 +14,7 @@ export default function PostModal({ children }) {
 
     const onClick = useCallback(
         (e) => {
-            if (e.target === overlay.current || e.target === wrapper.current) {
+            if (e.target === overlay.current || e.target === wrapper.current || e.target === backbtn.current) {
                 if (onDismiss) onDismiss()
             }
         },
@@ -42,8 +43,10 @@ export default function PostModal({ children }) {
                 ref={wrapper}
                 className="overflow-auto  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-modalWidth h-screen bg-white "
             >
+                <button ref={backbtn}>
+                    x
+                </button>
                 {children}
-
             </div>
         </div>
     )
