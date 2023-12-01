@@ -2,10 +2,11 @@
 import { useCallback, useRef, useEffect, MouseEventHandler } from 'react'
 import { useRouter } from 'next/navigation'
 import { RxCross2 } from "react-icons/rx";
+import boy from '../public/boy.png'
+import Image from "next/image"
 export default function PostModal({ children }) {
     const overlay = useRef(null)
     const wrapper = useRef(null)
-    const backbtn = useRef(null)
     const router = useRouter()
 
     const onDismiss = useCallback(() => {
@@ -14,7 +15,7 @@ export default function PostModal({ children }) {
 
     const onClick = useCallback(
         (e) => {
-            if (e.target === overlay.current || e.target === wrapper.current || e.target === backbtn.current) {
+            if (e.target === overlay.current || e.target === wrapper.current) {
                 if (onDismiss) onDismiss()
             }
         },
@@ -43,9 +44,21 @@ export default function PostModal({ children }) {
                 ref={wrapper}
                 className="overflow-auto  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-modalWidth h-screen bg-white "
             >
-                <button className='m-12' ref={backbtn}>
-                    x
-                </button>
+                <div className='h-8'></div>
+                <div>
+                    <div className="w-modalPost mx-auto">
+                        <div className="flex justify-between h-11 ">
+                            <div className="flex items-center">
+                                <Image className='rounded-full' src={boy} width={32} height={32} />
+                                <p className="text-sm ml-2">國立嘉義大學</p>
+                            </div>
+                            <button className="text-logingray" onClick={onDismiss}>
+                                <RxCross2 size={24} />
+                            </button>
+                        </div>
+                    </div>
+                    <div className='h-4'></div>
+                </div>
                 {children}
             </div>
         </div>

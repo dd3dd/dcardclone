@@ -14,10 +14,9 @@ export default function Page({ params }) {
 
     return (
         <PostModal >
-            <div className="h-8"></div>
             <div className="">
                 <div className="w-modalPost mx-auto">
-                    <div className="flex justify-between h-11 mb-4">
+                    {/* <div className="flex justify-between h-11 mb-4">
                         <div className="flex items-center">
                             <Image className='rounded-full' src={boy} width={32} height={32} />
                             <p className="text-sm ml-2">國立嘉義大學</p>
@@ -25,7 +24,7 @@ export default function Page({ params }) {
                         <button className="text-logingray mr-4">
                             <RxCross2 size={24} />
                         </button>
-                    </div>
+                    </div> */}
                     <article>
                         <div className="h-10">
                             <p className="text-3xl">轉職 前端工程師和UI怎麼合作</p>
