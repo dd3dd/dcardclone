@@ -1,6 +1,7 @@
 'use client';
 import '../globals.css'
 import { useState } from 'react';
+import { GoTriangleDown } from "react-icons/go";
 import { ImFilePicture } from "react-icons/im";
 import Link from 'next/link';
 import boy from '../../public/boy.png'
@@ -8,17 +9,22 @@ import Image from 'next/image'
 import SelectBoardModal from '@/components/SelectBoardModal';
 
 export default function Page() {
+    const [isModalOpen, setModalOpen] = useState(false);
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
     const handleIsModalOpen = () => {
         setModalOpen(!isModalOpen);
     }
-    const [isModalOpen, setModalOpen] = useState(false);
     return (
         <div className="w-full new_post_height bg-white">
             <SelectBoardModal isModalOpen={isModalOpen} handleIsModalOpen={handleIsModalOpen} />
             <form action="" className="max-w-newpostWidth h-full mx-auto flex flex-col">
-                <div className='h-24'></div>
+                <div className='h-8'></div>
                 <div className="h-8">
-                    <button onClick={handleIsModalOpen} type='button' className='text-sm p-2 rounded-lg bg-commentgray'>點此選擇發文看板</button>
+                    <button onClick={handleIsModalOpen} type='button' className='flex items-center text-sm p-2 rounded-lg
+                     bg-commentgray'>點此選擇發文看板
+                        <GoTriangleDown className='ml-1' />
+                    </button>
                 </div>
                 <div className='flex items-center mt-6 mb-6'>
                     <div>
@@ -28,10 +34,10 @@ export default function Page() {
                         國立嘉義大學
                     </p>
                 </div>
-                <textarea maxLength='80' placeholder='標題' className='h-28 text-3xl focus:outline-none' s>
+                <textarea onChange={(e) => setTitle(e.target.value)} maxLength='80' placeholder='標題' className='h-28 text-3xl focus:outline-none' s>
                 </textarea>
-                <p className='text-xs mb-4'>(0/80)</p>
-                <textarea placeholder='敘述' className='focus:outline-none flex-1' >
+                <p className='text-xs mb-4'>{`${title.length}/80`}</p>
+                <textarea onChange={(e) => setContent(e.target.value)} placeholder='敘述' className='focus:outline-none flex-1' >
                 </textarea>
                 <div className='flex h-16 items-center justify-between'>
                     <button>

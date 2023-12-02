@@ -9,7 +9,7 @@ export default function Board({ title, img }) {
         setIsStarDark(!isStarDark)
     }
     return (
-        <div className="relative  flex text-white hover:bg-darkblue">
+        <div className="relative  flex text-sidebargray hover:bg-darkblue">
             <Link className='flex-1 pl-4 h-11 flex items-center' href={'/'}>
                 <Image className='rounded-full mr-2' width={28} height={28} src={img} />
                 <p >{title}</p>

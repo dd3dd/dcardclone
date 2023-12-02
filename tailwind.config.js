@@ -32,6 +32,7 @@ module.exports = {
         'sidebargray': '#59798B',
         'darkblue': '#002032',
         'lightblue': '#3397CF',
+        'sidebargray': '#BFCBD2',
 
       },
       width: {
