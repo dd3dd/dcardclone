@@ -16,11 +16,19 @@ export default function Navbar() {
         setMenuVisible(!isMenuVisible);
         setHamburger(!hamburger);
     };
+    const toggleSideBar = () => {
+
+    };
     return (
         <div className='w-full h-12 bg-navcolor '>
             <div className='max-w-7xl h-12 mx-auto  '>
                 <div className="relative h-full w-full flex justify-between items-center ">
                     <div className='flex flex-1'>
+                        {/* <button className="text-white" onClick={toggleSideBar}>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button> */}
                         <Link className='' href={'/f'}>
                             <Image className='mx-8 '
                                 src={Logo}

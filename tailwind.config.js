@@ -21,7 +21,8 @@ module.exports = {
         'downloadapp': '#3397CF',
         'darkblue': '#002032',
         'followbtn': '#F0F1F2',
-        'commentgray': '#F2F3F4'
+        'commentgray': '#F2F3F4',
+        'mainDarkBlue': '#00324E',
 
       },
       textColor: {
@@ -36,8 +37,7 @@ module.exports = {
 
       },
       width: {
-        'modalWidth': '722px',
-        'modalPost': '602px',
+
         'commentinput': '442px',
 
       },
@@ -49,6 +49,8 @@ module.exports = {
         'postWidth': '608px',
         'newpostWidth': '680px',
         'boardModalWidth': '522px',
+        'modalPost': '602px',
+        'modalWidth': '722px',
       },
       maxHeight: {
         'boardModalHeight': '612px',

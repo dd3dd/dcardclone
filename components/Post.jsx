@@ -3,13 +3,12 @@ import { FaRegCommentAlt } from "react-icons/fa";
 import { MdSaveAlt } from "react-icons/md";
 import heart from '../public/heart.webp'
 import Link from "next/link";
-import PostModal from "./PostModal";
 
 export default function Post({ id = 0, userimg = '', board = '', name = '', date = 0,
     title = '', content = '', loveCount = 0, commentCount = 0 }) {
     return (
 
-        <div className="h-40 mt-12 ml-4 border-b">
+        <div className="mt-12 ml-4 pb-4 border-b">
             <Link href={`/f/posts/${id}`} scroll={false} >
                 <div className="flex h-5 text-sm text-logingray ">
                     <Image className='rounded-full mr-2' src={userimg} width={20} height={20} />
@@ -25,8 +24,6 @@ export default function Post({ id = 0, userimg = '', board = '', name = '', date
                     <Image src={heart} width={20} height={20} />
                     <p className="mx-2 ">{loveCount}</p>
                     <FaRegCommentAlt className='mx-2 text-blue-400' size={20} />
-
-
                     <p className="">{commentCount}</p>
                     <button className="flex ml-4">
                         <MdSaveAlt className='mx-2' size={20} />

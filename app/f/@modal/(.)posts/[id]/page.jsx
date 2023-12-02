@@ -1,13 +1,12 @@
+'use client'
 import PostModal from "@/components/PostModal";
 import Image from "next/image";
 import boy from '../../../../../public/boy.png'
-import { RxCross2 } from "react-icons/rx";
 import Link from "next/link";
 import heart from '../../../../../public/heart.webp'
 import { FaHeart } from "react-icons/fa";
 import { MdSaveAlt } from "react-icons/md";
 import { ImArrowDown } from "react-icons/im";
-import { MdArrowCircleDown } from "react-icons/md";
 import { MdArrowCircleUp } from "react-icons/md";
 export default function Page({ params }) {
     const { id } = params;
@@ -15,18 +14,9 @@ export default function Page({ params }) {
     return (
         <PostModal >
             <div className="">
-                <div className="w-modalPost mx-auto">
-                    {/* <div className="flex justify-between h-11 mb-4">
-                        <div className="flex items-center">
-                            <Image className='rounded-full' src={boy} width={32} height={32} />
-                            <p className="text-sm ml-2">國立嘉義大學</p>
-                        </div>
-                        <button className="text-logingray mr-4">
-                            <RxCross2 size={24} />
-                        </button>
-                    </div> */}
+                <div className="w-full max-w-modalPost mx-auto">
                     <article>
-                        <div className="h-10">
+                        <div >
                             <p className="text-3xl">轉職 前端工程師和UI怎麼合作</p>
                         </div>
                         <div className="mt-3 text-sm flex">
@@ -59,7 +49,7 @@ export default function Page({ params }) {
                     </div>
                 </div>
                 <div className="bg-commentgray">
-                    <div className="pt-10 mt-10 w-modalPost mx-auto ">
+                    <div className="pt-10 mt-10 w-full max-w-modalPost mx-auto">
                         <div className="text-sm flex">
                             <button className='mr-3 w-14 h-8 rounded-3xl text-white bg-downloadapp'>熱門</button>
                             <button className='mr-3 w-20 h-8 rounded-3xl bg-downloadapp'>由舊至新</button>
@@ -134,12 +124,12 @@ export default function Page({ params }) {
                     </div>
                 </div>
                 <div className="sticky bottom-0 h-12 bg-white">
-                    <div className="w-modalPost mx-auto h-12 flex items-center">
+                    <div className="w-full max-w-modalPost mx-auto h-12 flex items-center">
                         <Image src={boy} width={28} height={28} />
-                        <div className="w-commentinput flex">
-                            <input placeholder='留言...' className='w-full pl-2 border-none focus:outline-none h-12' type="text" />
+                        <div className="flex flex-1">
+                            <input onClick={() => alert('aa')} placeholder='留言...' className='w-full pl-2 border-none focus:outline-none ' type="text" />
                         </div>
-                        <div className="text-logingray ml-6">
+                        <div className="text-logingray">
                             <button className="mr-4">
                                 <FaHeart size={24} />
                             </button>

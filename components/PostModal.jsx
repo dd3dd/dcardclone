@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import { RxCross2 } from "react-icons/rx";
 import boy from '../public/boy.png'
 import Image from "next/image"
+import '../styles/scroll.css'
 export default function PostModal({ children }) {
     const overlay = useRef(null)
     const wrapper = useRef(null)
@@ -42,12 +43,12 @@ export default function PostModal({ children }) {
         >
             <div
                 ref={wrapper}
-                className="overflow-auto  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-modalWidth h-screen bg-white "
+                className="overflow-auto  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-modalWidth h-screen bg-white "
             >
                 <div className='h-8'></div>
-                <div>
-                    <div className="w-modalPost mx-auto">
-                        <div className="flex justify-between h-11 ">
+                <div className='w-full max-w-modalPost mx-auto'>
+                    <div>
+                        <div className="flex justify-between h-11">
                             <div className="flex items-center">
                                 <Image className='rounded-full' src={boy} width={32} height={32} />
                                 <p className="text-sm ml-2">國立嘉義大學</p>
