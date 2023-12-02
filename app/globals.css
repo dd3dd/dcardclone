@@ -18,3 +18,7 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
+
+.new_post_height {
+    height: calc(100vh - 48px);
+}

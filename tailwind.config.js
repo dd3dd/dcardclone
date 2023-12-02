@@ -38,6 +38,7 @@ module.exports = {
         'modalWidth': '722px',
         'modalPost': '602px',
         'commentinput': '442px',
+
       },
       minWidth: {
         'min25': '100px',
@@ -45,10 +46,15 @@ module.exports = {
       maxWidth: {
         'containerWidth': '728px',
         'postWidth': '608px',
-
+        'newpostWidth': '680px',
+        'boardModalWidth': '522px',
+      },
+      maxHeight: {
+        'boardModalHeight': '612px',
       },
       height: {
         'boardListHeight': '500px',
+
       }
     },
   },
