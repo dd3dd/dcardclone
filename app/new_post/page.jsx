@@ -7,22 +7,66 @@ import Link from 'next/link';
 import boy from '../../public/boy.png'
 import Image from 'next/image'
 import SelectBoardModal from '@/components/SelectBoardModal';
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+    const router = useRouter();
     const [isModalOpen, setModalOpen] = useState(false);
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const [selectedBoard, setSelectedBoard] = useState('點此選擇發文看板');
+    const testUser1 = "11@gmail.com";
+    const testUser2 = "22@gmail.com";
+    const testUser3 = "33@gmail.com";
     const handleIsModalOpen = () => {
         setModalOpen(!isModalOpen);
     }
+    const handleSelectedBoard = (newstate) => {
+        setSelectedBoard(newstate);
+    }
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (selectedBoard === '點此選擇發文看板') {
+            alert("請選擇發文看板");
+            return;
+        }
+        if (!title || !content) {
+            alert("標題和內容皆不可為空");
+            return;
+        }
+        try {
+            const res = await fetch("/api/post", {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify({
+                    "user": testUser3,
+                    "title": title,
+                    "content": content,
+                    "board": selectedBoard,
+                    'loveCount': 0,
+                    'commentCount': 0
+                }),
+            });
+            if (!res.ok) {
+                throw new Error("Failed to create a topic");
+            }
+            router.push('/f')
+            router.refresh();
+        } catch (error) {
+            console.log(error);
+        }
+    };
     return (
         <div className="w-full new_post_height bg-white">
-            <SelectBoardModal isModalOpen={isModalOpen} handleIsModalOpen={handleIsModalOpen} />
-            <form action="" className="max-w-newpostWidth h-full mx-auto flex flex-col">
+            <SelectBoardModal isModalOpen={isModalOpen} handleIsModalOpen={handleIsModalOpen}
+                handleSelectedBoard={handleSelectedBoard} />
+            <form onSubmit={handleSubmit} action="" className="max-w-newpostWidth h-full mx-auto flex flex-col">
                 <div className='h-8'></div>
                 <div className="h-8">
                     <button onClick={handleIsModalOpen} type='button' className='flex items-center text-sm p-2 rounded-lg
-                     bg-commentgray'>點此選擇發文看板
+                     bg-commentgray'>{selectedBoard}
                         <GoTriangleDown className='ml-1' />
                     </button>
                 </div>
@@ -40,12 +84,12 @@ export default function Page() {
                 <textarea onChange={(e) => setContent(e.target.value)} placeholder='敘述' className='focus:outline-none flex-1' >
                 </textarea>
                 <div className='flex h-16 items-center justify-between'>
-                    <button>
+                    <button type='button'>
                         <ImFilePicture size={24} />
                     </button>
                     <div className='flex items-center'>
                         <Link className='mr-4' href={'/f'}>取消</Link>
-                        <button className=' rounded-lg w-20 h-10 bg-submitbtn text-white'>發文</button>
+                        <button type='submit' className=' rounded-lg w-20 h-10 bg-submitbtn text-white'>發文</button>
                     </div>
                 </div>
             </form>

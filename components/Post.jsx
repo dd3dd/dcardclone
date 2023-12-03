@@ -3,18 +3,20 @@ import { FaRegCommentAlt } from "react-icons/fa";
 import { MdSaveAlt } from "react-icons/md";
 import heart from '../public/heart.webp'
 import Link from "next/link";
+import boy from '../public/boy.png'
+import girl from '../public/girl.png'
 
-export default function Post({ id = 0, userimg = '', board = '', name = '', date = 0,
+export default function Post({ id = null, user = null, board = '',
     title = '', content = '', loveCount = 0, commentCount = 0 }) {
     return (
-
         <div className="mt-12 ml-4 pb-4 border-b">
-            <Link href={`/f/posts/${id}`} scroll={false} >
+            <Link href={`/f/posts/${id}`}  >
                 <div className="flex h-5 text-sm text-logingray ">
-                    <Image className='rounded-full mr-2' src={userimg} width={20} height={20} />
+                    <Image className='rounded-full mr-2' src={user.gender === 'male' ? boy :
+                        girl} width={20} height={20} />
                     <p className="mr-2">{board}</p>
                     <p className="mr-2">‧</p>
-                    <p className="">{date}</p>
+                    {/* <p className="">{date}</p> */}
                 </div>
                 <div className="mt-4">
                     <p className="text-xl font-semibold">{title}</p>

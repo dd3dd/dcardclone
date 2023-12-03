@@ -23,6 +23,7 @@ module.exports = {
         'followbtn': '#F0F1F2',
         'commentgray': '#F2F3F4',
         'mainDarkBlue': '#00324E',
+        'sort-gray': '#E4E6E8'
 
       },
       textColor: {

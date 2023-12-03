@@ -1,10 +1,11 @@
 'use client'
 import { useCallback, useRef, useEffect } from 'react'
 import { IoSearch } from "react-icons/io5";
+import { useState } from 'react';
 import '../styles/scroll.css'
 const boardList = ['前端工程師', '軟體工程師', '美食', '工作', '理財', '寵物', '梗圖',
     '閒聊', '省錢', '遊戲', '測試', '測試', '測試', '測試', '測試',]
-export default function SelectBoardModal({ isModalOpen, handleIsModalOpen }) {
+export default function SelectBoardModal({ isModalOpen, handleIsModalOpen, handleSelectedBoard }) {
     const overlay = useRef(null)
     const wrapper = useRef(null)
     const onDismiss = useCallback(() => {
@@ -25,6 +26,10 @@ export default function SelectBoardModal({ isModalOpen, handleIsModalOpen }) {
         },
         [onDismiss]
     )
+    const handleSelect = (v) => {
+        handleSelectedBoard(v);
+        handleIsModalOpen();
+    }
     useEffect(() => {
         document.addEventListener('keydown', onKeyDown)
         return () => document.removeEventListener('keydown', onKeyDown)
@@ -57,8 +62,8 @@ export default function SelectBoardModal({ isModalOpen, handleIsModalOpen }) {
                             <div className='mt-4 '>
                                 {
                                     boardList.map((v, i) =>
-                                        <div className='' key={i}>
-                                            <button className='pl-2 h-11 w-full text-left hover:bg-commentgray'>
+                                        <div key={i}>
+                                            <button onClick={() => handleSelect(v)} className='pl-2 h-11 w-full text-left hover:bg-commentgray'>
                                                 {v}
                                             </button>
                                         </div>

@@ -2,8 +2,10 @@ import Image from "next/image"
 import frontend from '../public/frontend.webp'
 import { FaBell } from "react-icons/fa6";
 import PostList from "./PostList";
-export default function Container() {
+export default function Container({ board = '' }) {
+    console.log(board)
     return (
+
         <div className="rounded-md mt-5 pt-5 px-12 w-full max-w-containerWidth bg-white">
             <div className="sticky top-0 bg-white">
                 {/* <div className="justify-between flex w-full h-16 max-w-postWidth items-center">

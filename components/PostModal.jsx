@@ -1,10 +1,9 @@
 'use client'
-import { useCallback, useRef, useEffect, MouseEventHandler } from 'react'
+import { useCallback, useRef, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { RxCross2 } from "react-icons/rx";
-import boy from '../public/boy.png'
-import Image from "next/image"
 import '../styles/scroll.css'
+
 export default function PostModal({ children }) {
     const overlay = useRef(null)
     const wrapper = useRef(null)
@@ -46,20 +45,9 @@ export default function PostModal({ children }) {
                 className="overflow-auto  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-modalWidth h-screen bg-white "
             >
                 <div className='h-8'></div>
-                <div className='w-full max-w-modalPost mx-auto'>
-                    <div>
-                        <div className="flex justify-between h-11">
-                            <div className="flex items-center">
-                                <Image className='rounded-full' src={boy} width={32} height={32} />
-                                <p className="text-sm ml-2">國立嘉義大學</p>
-                            </div>
-                            <button className="text-logingray" onClick={onDismiss}>
-                                <RxCross2 size={24} />
-                            </button>
-                        </div>
-                    </div>
-                    <div className='h-4'></div>
-                </div>
+                <button className="right-16 top-10 absolute text-logingray" onClick={onDismiss}>
+                    <RxCross2 size={24} />
+                </button>
                 {children}
             </div>
         </div>
