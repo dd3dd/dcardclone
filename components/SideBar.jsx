@@ -1,4 +1,4 @@
-'use client';
+
 import Link from "next/link";
 import { IoIosListBox } from "react-icons/io";
 import { FaHotjar } from "react-icons/fa";

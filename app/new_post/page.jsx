@@ -72,7 +72,7 @@ export default function Page() {
                 </div>
                 <div className='flex items-center mt-6 mb-6'>
                     <div>
-                        <Image src={boy} width={32} height={32} />
+                        <Image alt='' src={boy} width={32} height={32} />
                     </div>
                     <p className='text-sm ml-2'>
                         國立嘉義大學

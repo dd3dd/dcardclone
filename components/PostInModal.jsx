@@ -11,7 +11,7 @@ export default function PostInModal({ _id = null, title = '', content = '', boar
     return (
         <div className="w-full max-w-modalPost mx-auto">
             <div className="flex items-center h-11">
-                <Image className='rounded-full' src={user.gender === 'male' ? boy :
+                <Image alt='' className='rounded-full' src={user.gender === 'male' ? boy :
                     girl} width={32} height={32} />
                 <p className="text-sm ml-2">{user.school}</p>
             </div>
@@ -32,7 +32,7 @@ export default function PostInModal({ _id = null, title = '', content = '', boar
             </article>
             <div className="h-10 flex justify-between text-logingray items-center">
                 <div className="flex h-6 ">
-                    <Image className='mr-2' src={heart} width={24} height={24} />
+                    <Image alt='' className='mr-2' src={heart} width={24} height={24} />
                     <p className='mr-2'>{loveCount}</p>
                     <p className='mr-2'>‧</p>
                     <p>留言 {commentCount}</p>

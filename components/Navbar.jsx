@@ -16,9 +16,6 @@ export default function Navbar() {
         setMenuVisible(!isMenuVisible);
         setHamburger(!hamburger);
     };
-    const toggleSideBar = () => {
-
-    };
     return (
         <div className='w-full h-12 bg-navcolor '>
             <div className='max-w-7xl h-12 mx-auto  '>

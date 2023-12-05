@@ -10,8 +10,8 @@ export default function Board({ title, img, route = '' }) {
     }
     return (
         <div className="relative  flex text-sidebargray hover:bg-darkblue">
-            <Link className='flex-1 pl-4 h-11 flex items-center' href={`${route}`}>
-                <Image className='rounded-full mr-2' width={28} height={28} src={img} />
+            <Link className='flex-1 pl-4 h-11 flex items-center' href={`/f/${route}`}>
+                <Image className='rounded-full mr-2' alt='' width={28} height={28} src={img} />
                 <p >{title}</p>
             </Link>
             <button className='absolute right-3 top-3 w-5 h-5' onClick={handleLikeBoard}>

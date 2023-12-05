@@ -6,7 +6,6 @@ import { MdArrowCircleUp } from "react-icons/md";
 import Image from 'next/image';
 import { useState } from 'react';
 import { ImFilePicture } from "react-icons/im";
-import Link from 'next/link';
 export default function CommentInput() {
     const [isCommentClick, setIsCommentClick] = useState(false);
     return (
@@ -15,7 +14,7 @@ export default function CommentInput() {
                 isCommentClick === false ?
                     <div className="sticky bottom-0 h-12 bg-white">
                         <div className="w-full max-w-modalPost mx-auto h-12 flex items-center">
-                            <Image src={boy} width={28} height={28} />
+                            <Image alt='' src={boy} width={28} height={28} />
                             <div className="flex flex-1">
                                 <input onClick={() => setIsCommentClick(true)} placeholder='留言...' className='w-full pl-2 border-none focus:outline-none ' type="text" />
                             </div>
@@ -36,7 +35,7 @@ export default function CommentInput() {
                     <form className='pt-8 sticky bottom-0 h-64 border-t bg-white' action="">
                         <div className='flex flex-col w-full h-full max-w-modalPost mx-auto'>
                             <div className='flex items-center'>
-                                <Image src={boy} width={32} height={32} />
+                                <Image alt='' src={boy} width={32} height={32} />
                                 <p className='ml-2'>國立嘉義大學</p>
                             </div>
                             <textarea className='w-full flex-1 focus:outline-none mt-8' placeholder='留言...'>

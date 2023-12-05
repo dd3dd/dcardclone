@@ -1,10 +1,7 @@
 import PostModal from "@/components/PostModal";
 import Image from "next/image";
 import boy from '../../../../../public/boy.png'
-import Link from "next/link";
-import heart from '../../../../../public/heart.webp'
 import { FaHeart } from "react-icons/fa";
-import { MdSaveAlt } from "react-icons/md";
 import { ImArrowDown } from "react-icons/im";
 import CommentInput from "@/components/CommentInput";
 import PostInModal from "@/components/PostInModal";
@@ -45,7 +42,7 @@ export default async function Page({ params }) {
 
                         <div className="h-35 flex pt-5 pb-4">
                             <div className="w-10">
-                                <Image src={boy} width={32} height={32} />
+                                <Image alt='' src={boy} width={32} height={32} />
                             </div>
                             <div className="flex-1 ml-1 ">
                                 <div className="flex justify-between mb-3 ">
@@ -76,7 +73,7 @@ export default async function Page({ params }) {
                         <hr />
                         <div className="h-35 flex pt-5 pb-4">
                             <div className="w-10">
-                                <Image src={boy} width={32} height={32} />
+                                <Image alt='' src={boy} width={32} height={32} />
                             </div>
                             <div className="flex-1 ml-1 ">
                                 <div className="flex justify-between mb-3 ">
