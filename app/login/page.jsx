@@ -1,5 +1,5 @@
 import LoginForm from "@/components/LoginForm";
-import LoginQR from "@/components/LoginQR";
+
 
 export default function Page() {
     return (
