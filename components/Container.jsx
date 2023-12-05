@@ -28,7 +28,7 @@ export default function Container({ board = '' }) {
                     <button className="mx-4 text-logingray">規則</button>
                 </div>
             </div>
-            {/* <PostList board={board} /> */}
+            <PostList board={board} />
         </div>
     )
 }

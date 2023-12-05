@@ -65,11 +65,11 @@ export default async function PostList({ board = '' }) {
     // }]
     return (
         <div>
-            {
+            {/* {
                 filteredPosts.map(v => <Post key={v._id} user={v.user} id={v._id} board={v.board}
                     title={v.title} content={v.content} loveCount={v.loveCount}
                     commentCount={v.commentCount} />)
-            }
+            } */}
         </div>
     )
 }
