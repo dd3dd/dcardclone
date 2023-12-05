@@ -1,10 +1,10 @@
 'use client'
 import { useCallback, useRef, useEffect } from 'react'
 import { IoSearch } from "react-icons/io5";
-import { useState } from 'react';
 import '../styles/scroll.css'
 const boardList = ['前端工程師', '軟體工程師', '美食', '工作', '理財', '寵物', '梗圖',
     '閒聊', '省錢', '遊戲', '測試', '測試', '測試', '測試', '測試',]
+
 export default function SelectBoardModal({ isModalOpen, handleIsModalOpen, handleSelectedBoard }) {
     const overlay = useRef(null)
     const wrapper = useRef(null)

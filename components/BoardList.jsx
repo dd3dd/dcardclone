@@ -16,10 +16,12 @@ export default function BoardList() {
         '閒聊', '省錢', '遊戲', 'aa', 'aa', 'aa', 'aa', 'aa', 'aa', 'aa', 'aa',]
     const boardImg = [frontend, software, food, job, money, pet,
         meme, chat, savemoney, game]
+    const boardListMap = ['f2e', 'softwareengineer', 'food', 'job', 'money', 'pet', 'meme',
+        'talk', 'savemoney', 'game', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test',]
     return (
         <div className="h-boardListHeight overflow-auto">
             <p className="pl-4 my-4 text-sm text-sidebargray">追蹤的看板</p>
-            {boardList.map((v, i) => <Board key={i} title={v} img={boardImg[i]} />)}
+            {boardList.map((v, i) => <Board key={i} title={v} img={boardImg[i]} route={boardListMap[i]} />)}
         </div>
     )
 }

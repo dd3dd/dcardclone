@@ -12,8 +12,29 @@ const fetchAllPosts = async () => {
         console.log(error);
     }
 };
-export default async function PostList() {
+export default async function PostList({ board = '' }) {
     const { post } = await fetchAllPosts();
+    const boardListMap = {
+        'f2e': '前端工程師',
+        'softwareengineer': '軟體工程師',
+        'food': '美食',
+        'job': '工作',
+        'money': '理財',
+        'pet': '寵物',
+        'meme': '梗圖',
+        'talk': '閒聊',
+        'savemoney': '省錢',
+        'game': '遊戲',
+        'test': '測試'
+    }
+    const newBoard = board === ''
+        ? ''
+        : boardListMap[board];
+    const filteredPosts = newBoard === ''
+        ? post
+        : post.filter(v => v.board === newBoard);
+
+
     // const postList = [{
     //     id: 1, userimg: boy, board: '前端工程師', name: '國立嘉義大學', date: '3天',
     //     title: '測試文章', content: '測試內文測試內文測試內文測試內文測試內文測試內文測試內文',
@@ -44,9 +65,11 @@ export default async function PostList() {
     // }]
     return (
         <div>
-            {post.map(v => <Post key={v._id} user={v.user} id={v._id} board={v.board}
-                title={v.title} content={v.content} loveCount={v.loveCount}
-                commentCount={v.commentCount} />)}
+            {
+                filteredPosts.map(v => <Post key={v._id} user={v.user} id={v._id} board={v.board}
+                    title={v.title} content={v.content} loveCount={v.loveCount}
+                    commentCount={v.commentCount} />)
+            }
         </div>
     )
 }

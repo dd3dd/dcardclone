@@ -24,15 +24,14 @@ const getPostById = async (id) => {
 export default async function Page({ params }) {
     const { id } = params;
     const { post } = await getPostById(id);
-    console.log(post)
     return (
         <PostModal >
-            <div className="">
+            <div className="h-full">
                 <PostInModal _id={post._id} title={post.title} content={post.content}
                     board={post.board} loveCount={post.loveCount} commentCount={post.commentCount}
                     user={post.user} />
 
-                <div className="bg-commentgray">
+                <div className="bg-commentgray h-full">
                     <div className="pt-10 mt-10 w-full max-w-modalPost mx-auto">
                         <div className="text-sm flex">
                             <button className='mr-3 w-14 h-8 rounded-3xl text-white bg-downloadapp'>熱門</button>
