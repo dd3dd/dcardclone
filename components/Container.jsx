@@ -5,8 +5,8 @@ import PostList from "./PostList";
 export default function Container({ board = '' }) {
     return (
 
-        <div className="rounded-md mt-5 pt-5 px-12 w-full max-w-containerWidth bg-white">
-            <div className="sticky top-0 bg-white">
+        <div className=" rounded-md mt-5 pt-5 px-12 w-full max-w-containerWidth bg-white h-screen">
+            <div className="sticky top-12 bg-white">
                 {/* <div className="justify-between flex w-full h-16 max-w-postWidth items-center">
                     <div className="flex max-h-10 overflow-hidden">
                         <Image className='rounded-full' width={40} height={40}

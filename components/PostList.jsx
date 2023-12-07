@@ -64,7 +64,7 @@ export default async function PostList({ board = '' }) {
     //     loveCount: 3, commentCount: 2
     // }]
     return (
-        <div>
+        <div className="">
             {
                 filteredPosts.map(v => <Post key={v._id} user={v.user} id={v._id} board={v.board}
                     title={v.title} content={v.content} loveCount={v.loveCount}

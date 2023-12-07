@@ -9,25 +9,31 @@ import { IoMdPerson } from "react-icons/io";
 import Link from "next/link";
 import SearchInput from './SearchInput';
 import { useState } from 'react';
+import { useContext } from 'react'
+import Context from '@/context/Context'
+import { GoTriangleDown } from "react-icons/go";
 export default function Navbar() {
     const [isMenuVisible, setMenuVisible] = useState(false);
     const [hamburger, setHamburger] = useState(false)
+    const { isSideBar, setIsSideBar } = useContext(Context);
     const toggleMenu = () => {
         setMenuVisible(!isMenuVisible);
         setHamburger(!hamburger);
     };
+    const toggleSideBar = () => {
+        setIsSideBar(!isSideBar);
+    }
     return (
-        <div className='w-full h-12 bg-navcolor '>
-            <div className='max-w-7xl h-12 mx-auto  '>
+        <div className='w-full h-12 bg-navcolor sticky top-0 z-10'>
+            <div className='max-w-7xl h-12 mx-auto'>
                 <div className="relative h-full w-full flex justify-between items-center ">
                     <div className='flex flex-1'>
-                        {/* <button className="text-white" onClick={toggleSideBar}>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                            </svg>
-                        </button> */}
+
+                        <button className="text-white" onClick={toggleSideBar}>
+                            <GoTriangleDown className='mx-2' size={24} />
+                        </button>
                         <Link className='' href={'/f'}>
-                            <Image className='mx-8 '
+                            <Image className='mx-4'
                                 src={Logo}
                                 alt="Logo"
                                 width={75}

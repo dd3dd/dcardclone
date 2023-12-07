@@ -1,4 +1,4 @@
-
+'use client';
 import Link from "next/link";
 import { IoIosListBox } from "react-icons/io";
 import { FaHotjar } from "react-icons/fa";
@@ -7,11 +7,18 @@ import { HiMiniTrophy } from "react-icons/hi2";
 import { FaUserFriends } from "react-icons/fa";
 import { IoGameController } from "react-icons/io5";
 import BoardList from "./BoardList";
+import { useContext } from 'react'
+import Context from '@/context/Context'
 import '../styles/sidebar-scroll.css'
 export default function SideBar() {
+    const { isSideBar, setIsSideBar } = useContext(Context);
     return (
         <>
-            <div className="w-52 hidden md:flex flex-col ">
+            {
+                isSideBar &&
+                <div className="w-52 hidden md:flex  bg-mainDarkBlue "></div>
+            }
+            <div className={`w-52 ${isSideBar ? 'fixed md:hidden z-10' : 'hidden md:flex'} flex flex-col bg-mainDarkBlue h-screen`}>
                 <div className="w-full">
                     <div className="flex flex-col text-sidebargray mt-5 text-md">
                         <Link className='pl-4 h-11 flex items-center  hover:bg-darkblue' href={'/'}>
