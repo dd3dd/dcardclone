@@ -1,7 +1,4 @@
-import Image from "next/image";
-import boy from '../public/boy.png'
-import { FaHeart } from "react-icons/fa";
-import { ImArrowDown } from "react-icons/im";
+import Comment from "./Comment";
 const show = async (postid) => {
     try {
         const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/api/comment/${postid}`, {
@@ -18,7 +15,7 @@ const show = async (postid) => {
 };
 export default async function CommentList({ postid = '', }) {
     const { comment } = await show(postid);
-    console.log(comment)
+    // console.log(comment)
     return (
         <div className="bg-commentgray h-full">
             <div className="pt-10 mt-10 w-full max-w-modalPost mx-auto">
@@ -28,72 +25,13 @@ export default async function CommentList({ postid = '', }) {
                     <button className='w-20 h-8 rounded-3xl bg-sort-gray'>由新至舊</button>
                 </div>
                 <p className="text-logingray mt-4 mb-2">
-                    共 3 則留言
+                    {`共 ${comment.length} 則留言`}
                 </p>
                 <hr />
-
-
-                {/* <div className="h-35 flex pt-5 pb-4">
-                    <div className="w-10">
-                        <Image alt='' src={boy} width={32} height={32} />
-                    </div>
-                    <div className="flex-1 ml-1 ">
-                        <div className="flex justify-between mb-3 ">
-                            <div className="">
-                                <p className="text-sm">國立嘉義大學</p>
-                            </div>
-                            <div className="flex mr-2 text-logingray">
-                                <button className="mr-4">
-                                    <FaHeart size={20} />
-                                </button>
-                                <button>
-                                    <ImArrowDown size={20} />
-                                </button>
-                            </div>
-                        </div>
-                        <div className="">
-                            <p className="">
-                                平面設計跟 UI 還是兩種領域範疇，UI 跟使用者體驗有著不可分離的關係，他不是排版跟視覺設計這麼簡單，很多時候考量到人的行為、感受跟思考、相關產業等因果關係，導致在UI 設計前後，需要UX的專業研究與設計、分析一起完成！
-                            </p>
-                        </div>
-                        <div className="flex mt-2 text-sm ">
-                            <p>B1 ‧</p>
-                            <p>11 月 20 日 22:20</p>
-                        </div>
-                    </div>
-
-                </div> */}
-                <hr />
-                {/* <div className="h-35 flex pt-5 pb-4">
-                    <div className="w-10">
-                        <Image alt='' src={boy} width={32} height={32} />
-                    </div>
-                    <div className="flex-1 ml-1 ">
-                        <div className="flex justify-between mb-3 ">
-                            <div className="">
-                                <p className="text-sm">國立嘉義大學</p>
-                            </div>
-                            <div className="flex mr-2 text-logingray">
-                                <button className="mr-4">
-                                    <FaHeart size={20} />
-                                </button>
-                                <button>
-                                    <ImArrowDown size={20} />
-                                </button>
-                            </div>
-                        </div>
-                        <div className="">
-                            <p className="">
-                                平面設計跟 UI 還是兩種領域範疇，UI 跟使用者體驗有著不可分離的關係，他不是排版跟視覺設計這麼簡單，很多時候考量到人的行為、感受跟思考、相關產業等因果關係，導致在UI 設計前後，需要UX的專業研究與設計、分析一起完成！
-                            </p>
-                        </div>
-                        <div className="flex mt-2 text-sm">
-                            <p>B1 ‧</p>
-                            <p>11 月 20 日 22:20</p>
-                        </div>
-                    </div>
-
-                </div> */}
+                {
+                    comment.map((v, i) => <Comment key={v._id} floor={i + 1} user={v.user} comment={v.comment}
+                        createdAt={v.createdAt} updatedAt={v.updatedAt} />)
+                }
             </div>
         </div>
     )
