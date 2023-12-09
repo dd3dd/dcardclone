@@ -1,4 +1,3 @@
-import PostModal from "@/components/PostModal";
 import CommentInput from "@/components/CommentInput";
 import PostInModal from "@/components/PostInModal";
 import CommentList from "@/components/CommentList";
@@ -29,12 +28,11 @@ const getComment = async (id) => {
         console.log(error);
     }
 };
-export default async function Page({ params }) {
-    const { id } = params;
+export default async function PostContainer({ id = null, }) {
     const { post } = await getPostById(id);
     const { comment } = await getComment(id);
     return (
-        <PostModal >
+        <div className="rounded-md mt-5 pt-10 w-full max-w-containerWidth bg-white min-h-screen">
             <div className="h-full flex flex-col">
                 <PostInModal _id={post._id} title={post.title} content={post.content}
                     board={post.board} loveCount={post.loveCount} commentCount={comment.length}
@@ -42,7 +40,6 @@ export default async function Page({ params }) {
                 <CommentList comment={comment} />
                 <CommentInput postid={post._id} />
             </div>
-        </PostModal>
-
+        </div>
     )
 }

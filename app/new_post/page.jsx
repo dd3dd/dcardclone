@@ -9,6 +9,7 @@ import Image from 'next/image'
 import SelectBoardModal from '@/components/SelectBoardModal';
 import { useRouter } from "next/navigation";
 
+
 export default function Page() {
     const router = useRouter();
     const [isModalOpen, setModalOpen] = useState(false);

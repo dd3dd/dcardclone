@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 import { useState } from "react";
-export default function Board({ title, img, route = '' }) {
+export default function Board({ title = '', img = '', route = '' }) {
     const [isStarDark, setIsStarDark] = useState(true)
     const handleLikeBoard = () => {
         setIsStarDark(!isStarDark)

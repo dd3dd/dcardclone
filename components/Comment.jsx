@@ -5,7 +5,7 @@ import { ImArrowDown } from "react-icons/im";
 export default function Comment({ floor = 0, user = {}, comment = '', createdAt = null, updatedAt = null, }) {
     return (
         <>
-            <div className="h-35 flex pt-5 pb-4">
+            <div className="flex pt-5 pb-4">
                 <div className="w-10">
                     <Image alt='' src={boy} width={32} height={32} />
                 </div>

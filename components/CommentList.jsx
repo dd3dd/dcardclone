@@ -1,24 +1,8 @@
 import Comment from "./Comment";
-const show = async (postid) => {
-    try {
-        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/api/comment/${postid}`, {
-            cache: "no-store",
-        });
-
-        if (!res.ok) {
-            throw new Error("Failed to fetch topics");
-        }
-        return res.json();
-    } catch (error) {
-        console.log(error);
-    }
-};
-export default async function CommentList({ postid = '', }) {
-    const { comment } = await show(postid);
-    // console.log(comment)
+export default function CommentList({ comment = null, }) {
     return (
-        <div className="bg-commentgray h-full">
-            <div className="pt-10 mt-10 w-full max-w-modalPost mx-auto">
+        <div className="bg-commentgray flex-1">
+            <div className="pt-10 mt-10 w-full h-full max-w-modalPost mx-auto ">
                 <div className="text-sm flex">
                     <button className='mr-3 w-14 h-8 rounded-3xl text-white bg-downloadapp'>熱門</button>
                     <button className='mr-3 w-20 h-8 rounded-3xl bg-sort-gray'>由舊至新</button>
@@ -33,6 +17,7 @@ export default async function CommentList({ postid = '', }) {
                         createdAt={v.createdAt} updatedAt={v.updatedAt} />)
                 }
             </div>
+
         </div>
     )
 }
