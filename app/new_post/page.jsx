@@ -1,24 +1,29 @@
 'use client';
 import '../globals.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { GoTriangleDown } from "react-icons/go";
 import { ImFilePicture } from "react-icons/im";
 import Link from 'next/link';
 import boy from '../../public/boy.png'
+import girl from '../../public/girl.png'
 import Image from 'next/image'
 import SelectBoardModal from '@/components/SelectBoardModal';
 import { useRouter } from "next/navigation";
-
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 export default function Page() {
+    const { data: session } = useSession();
     const router = useRouter();
     const [isModalOpen, setModalOpen] = useState(false);
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [selectedBoard, setSelectedBoard] = useState('點此選擇發文看板');
-    const testUser1 = "11@gmail.com";
-    const testUser2 = "22@gmail.com";
-    const testUser3 = "33@gmail.com";
+    const user = session?.user?.email
+    useEffect(() => {
+        if (!session)
+            redirect("/")
+    }, [session])
     const handleIsModalOpen = () => {
         setModalOpen(!isModalOpen);
     }
@@ -42,7 +47,7 @@ export default function Page() {
                     "Content-type": "application/json",
                 },
                 body: JSON.stringify({
-                    "user": testUser3,
+                    "user": user,
                     "title": title,
                     "content": content,
                     "board": selectedBoard,
@@ -73,10 +78,11 @@ export default function Page() {
                 </div>
                 <div className='flex items-center mt-6 mb-6'>
                     <div>
-                        <Image alt='' src={boy} width={32} height={32} />
+
+                        <Image alt='' src={session?.user?.gender === 'male' ? boy : girl} width={32} height={32} />
                     </div>
                     <p className='text-sm ml-2'>
-                        國立嘉義大學
+                        {session?.user?.school}
                     </p>
                 </div>
                 <textarea onChange={(e) => setTitle(e.target.value)} maxLength='80' placeholder='標題' className='h-28 text-3xl focus:outline-none' s>

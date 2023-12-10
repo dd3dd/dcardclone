@@ -2,6 +2,7 @@
 import { useState } from "react"
 import { IoEye } from "react-icons/io5";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 export default function RegisterForm() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -63,10 +64,11 @@ export default function RegisterForm() {
         }
     };
     return (
-        <form onSubmit={handleSubmit} className='w-3/4' action="">
+        <form onSubmit={handleSubmit} className='w-3/4 mb-8' action="">
             <div>
                 <div className='flex w-full justify-between'>
                     <label htmlFor="email">信箱</label>
+                    <Link href={'/'} className="text-forgetpass ">已經有帳號了嗎? 點我登入</Link>
                 </div>
                 <input onChange={(e) => setEmail(e.target.value)} id='email' className='w-full h-10 p-2 mt-4 border rounded-md' placeholder='輸入信箱' type="text" />
             </div>

@@ -12,10 +12,14 @@ import { useState } from 'react';
 import { useContext } from 'react'
 import Context from '@/context/Context'
 import { GoTriangleDown } from "react-icons/go";
+import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
+
 export default function Navbar() {
     const [isMenuVisible, setMenuVisible] = useState(false);
     const [hamburger, setHamburger] = useState(false)
     const { isSideBar, setIsSideBar } = useContext(Context);
+    const { data: session } = useSession();
     const toggleMenu = () => {
         setMenuVisible(!isMenuVisible);
         setHamburger(!hamburger);
@@ -23,6 +27,7 @@ export default function Navbar() {
     const toggleSideBar = () => {
         setIsSideBar(!isSideBar);
     }
+    // console.log(session)
     return (
         <div className='w-full h-12 bg-navcolor sticky top-0 z-10'>
             <div className='max-w-7xl h-12 mx-auto'>
@@ -32,7 +37,7 @@ export default function Navbar() {
                         <button className="text-white" onClick={toggleSideBar}>
                             <GoTriangleDown className='mx-2' size={24} />
                         </button>
-                        <Link className='' href={'/f'}>
+                        <Link className='' href={'/'}>
                             <Image className='mx-4'
                                 src={Logo}
                                 alt="Logo"
@@ -43,23 +48,35 @@ export default function Navbar() {
                         <SearchInput />
                     </div>
                     <div className='hidden md:flex  w-2/5 justify-evenly items-center'>
-                        <Link className='' href={'/new_post'}>
-                            <RiPencilFill className='text-white' size={24} />
-                        </Link>
-                        <Link className='' href={'/'}>
-                            <FaBell className='text-white' size={20} />
-                        </Link>
-                        <Link className='' href={'/'}>
-                            <FaUserFriends className='text-white' size={24} />
-                        </Link>
-                        <Link className='' href={'/'}>
-                            <MdEmail className='text-white' size={24} />
-                        </Link>
-                        <Link className='' href={'/'}>
-                            <IoMdPerson className='text-white' size={24} />
-                        </Link>
-                        {/* <Link className='' href={'/login'}> 註冊 / 登入</Link> */}
-                        <button className='w-20 h-8 rounded-md bg-downloadapp text-white'>下載App</button>
+                        {
+                            session ?
+                                <>
+                                    <Link className='' href={'/new_post'}>
+                                        <RiPencilFill className='text-white' size={24} />
+                                    </Link>
+                                    <Link className='' href={'/'}>
+                                        <FaBell className='text-white' size={20} />
+                                    </Link>
+                                    <Link className='' href={'/'}>
+                                        <FaUserFriends className='text-white' size={24} />
+                                    </Link>
+                                    <Link className='' href={'/'}>
+                                        <MdEmail className='text-white' size={24} />
+                                    </Link>
+                                    <Link className='' href={'/'}>
+                                        <IoMdPerson className='text-white' size={24} />
+                                    </Link>
+                                </>
+                                :
+                                <></>
+                        }
+                        {
+                            session ?
+                                <button onClick={() => signOut()} className='w-20 h-8 rounded-md bg-downloadapp text-white'>登出</button>
+                                :
+                                <Link className='text-white' href={'/'}> 註冊 / 登入</Link>
+                        }
+
                     </div>
                     <div className="md:hidden  flex justify-end">
                         <button className="text-white" onClick={toggleMenu}>
@@ -77,8 +94,15 @@ export default function Navbar() {
                     </div>
                 </div>
                 {
-                    isMenuVisible &&
-                    <div className='relative md:hidden flex justify-evenly bg-navcolor z-10'>
+                    isMenuVisible && !session &&
+                    < div className='relative md:hidden flex justify-evenly bg-navcolor z-10'>
+                        <Link className='text-white' href={'/'}> 註冊 / 登入
+                        </Link>
+                    </div>
+                }
+                {
+                    isMenuVisible && session &&
+                    < div className='relative md:hidden flex justify-evenly bg-navcolor z-10'>
                         <Link className='' href={'/new_post'}>
                             <RiPencilFill className='text-white' size={24} />
                         </Link>
@@ -94,11 +118,13 @@ export default function Navbar() {
                         <Link className='' href={'/'}>
                             <IoMdPerson className='text-white' size={24} />
                         </Link>
+                        <button onClick={() => signOut()} className='w-20 h-8 rounded-md bg-downloadapp text-white'>登出</button>
                     </div>
                 }
+
             </div>
 
-        </div>
+        </div >
 
     )
 }

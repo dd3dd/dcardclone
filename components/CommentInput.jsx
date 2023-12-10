@@ -7,13 +7,13 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { ImFilePicture } from "react-icons/im";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 export default function CommentInput({ postid = null, }) {
+    const { data: session } = useSession();
     const router = useRouter();
-    const testUser1 = "11@gmail.com";
-    const testUser2 = "22@gmail.com";
-    const testUser3 = "33@gmail.com";
     const [isCommentClick, setIsCommentClick] = useState(false);
     const [comment, setComment] = useState('');
+    const user = session?.user?.email
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!comment) {
@@ -28,7 +28,7 @@ export default function CommentInput({ postid = null, }) {
                     "Content-type": "application/json",
                 },
                 body: JSON.stringify({
-                    "user": testUser3,
+                    "user": user,
                     "post": postid,
                     "comment": comment,
                 }),
