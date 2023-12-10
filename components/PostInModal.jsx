@@ -6,8 +6,8 @@ import Image from "next/image";
 import boy from '../public/boy.png'
 import girl from '../public/girl.png'
 
-export default function PostInModal({ _id = null, title = '', content = '', board = '',
-    loveCount = 0, commentCount = 0, user = {} }) {
+export default function PostInModal({ _id = null, title = '', content = '', board = '', user = {},
+    comment = null, createdAt = null }) {
     return (
         <div className="w-full max-w-modalPost mx-auto">
             <div className="flex items-center h-11">
@@ -23,7 +23,7 @@ export default function PostInModal({ _id = null, title = '', content = '', boar
                 <div className="mt-3 text-sm flex">
                     <Link className='text-lightblue' href={'/'}>{board}</Link>
                     <p className="text-logingray ml-4">
-                        11 月 18 日 21:50
+                        {new Date(createdAt).toLocaleString()}
                     </p>
                 </div>
                 <p className="mt-4 mb-8 leading-7 ">
@@ -33,9 +33,9 @@ export default function PostInModal({ _id = null, title = '', content = '', boar
             <div className="h-10 flex justify-between text-logingray items-center">
                 <div className="flex h-6 ">
                     <Image alt='' className='mr-2' src={heart} width={24} height={24} />
-                    <p className='mr-2'>{loveCount}</p>
+                    <p className='mr-2'>0</p>
                     <p className='mr-2'>‧</p>
-                    <p>留言 {commentCount}</p>
+                    <p>留言 {comment.length}</p>
                 </div>
                 <div className="flex h-6 items-center">
                     <button className="text-logingray">

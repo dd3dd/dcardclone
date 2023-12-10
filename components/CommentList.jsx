@@ -13,7 +13,7 @@ export default function CommentList({ comment = null, }) {
                 </p>
                 <hr />
                 {
-                    comment.map((v, i) => <Comment key={v._id} floor={i + 1} user={v.user} comment={v.comment}
+                    comment.map((v, i) => <Comment key={v._id} id={v._id} floor={i + 1} user={v.user} comment={v.comment}
                         createdAt={v.createdAt} updatedAt={v.updatedAt} />)
                 }
             </div>

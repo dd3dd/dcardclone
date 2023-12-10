@@ -37,8 +37,8 @@ export default async function Page({ params }) {
         <PostModal >
             <div className="h-full flex flex-col">
                 <PostInModal _id={post._id} title={post.title} content={post.content}
-                    board={post.board} loveCount={post.loveCount} commentCount={comment.length}
-                    user={post.user} />
+                    comment={comment}
+                    board={post.board} user={post.user} createdAt={post.createdAt} />
                 <CommentList comment={comment} />
                 <CommentInput postid={post._id} />
             </div>

@@ -1,5 +1,6 @@
 'use client';
 import boy from '../public/boy.png'
+import girl from '../public/girl.png'
 import { FaHeart } from "react-icons/fa";
 import { MdSaveAlt } from "react-icons/md";
 import { MdArrowCircleUp } from "react-icons/md";
@@ -49,7 +50,7 @@ export default function CommentInput({ postid = null, }) {
                 isCommentClick === false ?
                     <div className="sticky bottom-0 h-12 bg-white">
                         <div className="w-full max-w-modalPost mx-auto h-12 flex items-center">
-                            <Image alt='' src={boy} width={28} height={28} />
+                            <Image alt='' src={session?.user?.gender === 'male' ? boy : girl} width={28} height={28} />
                             <div className="flex flex-1">
                                 <input onClick={() => setIsCommentClick(true)} placeholder='留言...' className='w-full pl-2 border-none focus:outline-none ' type="text" />
                             </div>
@@ -70,8 +71,8 @@ export default function CommentInput({ postid = null, }) {
                     <form onSubmit={handleSubmit} className='pt-8 sticky bottom-0 h-64 border-t bg-white' action="">
                         <div className='flex flex-col w-full h-full max-w-modalPost mx-auto'>
                             <div className='flex items-center'>
-                                <Image alt='' src={boy} width={32} height={32} />
-                                <p className='ml-2'>國立嘉義大學</p>
+                                <Image alt='' src={session?.user?.gender === 'male' ? boy : girl} width={32} height={32} />
+                                <p className='ml-2'>{session?.user?.school}</p>
                             </div>
                             <textarea onChange={e => setComment(e.target.value)} className='w-full flex-1 focus:outline-none mt-8' placeholder='留言...'>
 

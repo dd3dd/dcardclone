@@ -35,7 +35,7 @@ export default async function PostContainer({ id = null, }) {
         <div className="rounded-md mt-5 pt-10 w-full max-w-containerWidth bg-white min-h-screen">
             <div className="h-full flex flex-col">
                 <PostInModal _id={post._id} title={post.title} content={post.content}
-                    board={post.board} loveCount={post.loveCount} commentCount={comment.length}
+                    board={post.board} comment={comment} createdAt={post.createdAt}
                     user={post.user} />
                 <CommentList comment={comment} />
                 <CommentInput postid={post._id} />

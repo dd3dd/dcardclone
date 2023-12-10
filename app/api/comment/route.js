@@ -28,14 +28,22 @@ export async function POST(request) {
     }
 
 }
-// {
-//     "user":"33@gmail.com",
-//     "title":"title3",
-//     "content":"content3",
-//     "board":"工作"
-// }
+
 export async function GET() {
     await connectMongoDB();
     const comment = await dcardComment.find().populate('user').populate('post');
     return NextResponse.json({ comment });
+}
+export async function DELETE(request) {
+    const id = request.nextUrl.searchParams.get("id");
+    await connectMongoDB();
+    await dcardComment.findByIdAndDelete(id);
+    return NextResponse.json({ message: "Comment deleted" }, { status: 200 });
+}
+export async function PUT(request) {
+    const id = request.nextUrl.searchParams.get("id");
+    const { user, post, newComment: comment } = await request.json();
+    await connectMongoDB();
+    await dcardComment.findByIdAndUpdate(id, { user, post, comment });
+    return NextResponse.json({ message: "Comment updated" }, { status: 200 });
 }
