@@ -4,11 +4,11 @@ import Context from './Context';
 
 const Provider = ({ children }) => {
     const [isSideBar, setIsSideBar] = useState(false);
-    const [postInfo, setPostInfo] = useState([])
+    // const [postInfo, setPostInfo] = useState([])
 
     return (
         <Context.Provider value={{
-            isSideBar, setIsSideBar, postInfo, setPostInfo,
+            isSideBar, setIsSideBar
         }}>
             {children}
         </Context.Provider>

@@ -14,7 +14,6 @@ export default function CommentInput({ postid = null, }) {
     const router = useRouter();
     const [isCommentClick, setIsCommentClick] = useState(false);
     const [comment, setComment] = useState('');
-    const user = session?.user?.email
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!comment) {
@@ -29,7 +28,7 @@ export default function CommentInput({ postid = null, }) {
                     "Content-type": "application/json",
                 },
                 body: JSON.stringify({
-                    "user": user,
+                    "user": session?.user?.email,
                     "post": postid,
                     "comment": comment,
                 }),
