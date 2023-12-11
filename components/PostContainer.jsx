@@ -14,9 +14,9 @@ const getPostById = async (id) => {
         console.log(error);
     }
 };
-const getComment = async (id) => {
+const getComment = async (postid) => {
     try {
-        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/api/comment/${id}`, {
+        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/api/comment/${postid}`, {
             cache: "no-store",
         });
 

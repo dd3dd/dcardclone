@@ -2,9 +2,9 @@ import PostModal from "@/components/PostModal";
 import CommentInput from "@/components/CommentInput";
 import PostInModal from "@/components/PostInModal";
 import CommentList from "@/components/CommentList";
-const getPostById = async (id) => {
+const getPostById = async (postid) => {
     try {
-        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/api/post/${id}`, {
+        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/api/post/${postid}`, {
             cache: "no-store",
         });
         if (!res.ok) {
@@ -15,9 +15,9 @@ const getPostById = async (id) => {
         console.log(error);
     }
 };
-const getComment = async (id) => {
+const getComment = async (postid) => {
     try {
-        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/api/comment/${id}`, {
+        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/api/comment/${postid}`, {
             cache: "no-store",
         });
 

@@ -27,8 +27,8 @@ export default function Comment({ id = null, floor = 0, user = {}, comment = '',
             if (!res.ok) {
                 throw new Error("Failed to delete a comment");
             }
-            router.back();
             router.refresh();
+            router.back();
         }
     }
     const handleSubmit = async (e) => {
@@ -45,8 +45,9 @@ export default function Comment({ id = null, floor = 0, user = {}, comment = '',
                 throw new Error("Failed to update topic");
             }
             setIsEdit(0);
-            router.back();
+
             router.refresh();
+            router.back();
         } catch (error) {
             console.log(error);
         }

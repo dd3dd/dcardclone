@@ -42,8 +42,8 @@ export async function DELETE(request) {
 }
 export async function PUT(request) {
     const id = request.nextUrl.searchParams.get("id");
-    const { user, post, newComment: comment } = await request.json();
+    const { newComment: comment } = await request.json();
     await connectMongoDB();
-    await dcardComment.findByIdAndUpdate(id, { user, post, comment });
+    await dcardComment.findByIdAndUpdate(id, { comment });
     return NextResponse.json({ message: "Comment updated" }, { status: 200 });
 }

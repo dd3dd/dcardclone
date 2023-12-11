@@ -6,9 +6,9 @@ import Link from "next/link";
 import boy from '../public/boy.png'
 import girl from '../public/girl.png'
 
-const getCommentNum = async (id) => {
+const getCommentNum = async (postid) => {
     try {
-        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/api/comment/${id}`, {
+        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/api/comment/${postid}`, {
             cache: "no-store",
         });
 
