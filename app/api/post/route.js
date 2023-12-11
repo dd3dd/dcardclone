@@ -32,8 +32,15 @@ export async function POST(request) {
 //     "content":"content3",
 //     "board":"工作"
 // }
-export async function GET() {
+export async function GET(request) {
+    const board = request.nextUrl.searchParams.get("board");
     await connectMongoDB();
-    const post = await dcardPost.find().populate('user');
+    let post = null;
+    if (!board) {
+        post = await dcardPost.find().populate('user');
+    }
+    else {
+        post = await dcardPost.find({ board: board }).populate('user');
+    }
     return NextResponse.json({ post });
 }

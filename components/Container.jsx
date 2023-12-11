@@ -1,6 +1,3 @@
-// import Image from "next/image"
-// import frontend from '../public/frontend.webp'
-// import { FaBell } from "react-icons/fa6";
 import PostList from "./PostList";
 export default function Container({ board = '' }) {
     return (
@@ -28,7 +25,7 @@ export default function Container({ board = '' }) {
                     <button className="mx-4 text-logingray">規則</button>
                 </div>
             </div>
-            {/* <PostList board={board} /> */}
+            <PostList board={board} />
         </div>
     )
 }
