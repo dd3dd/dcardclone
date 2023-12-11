@@ -36,8 +36,9 @@ export default function CommentInput({ postid = null, }) {
             if (!res.ok) {
                 throw new Error("Failed to create a comment");
             }
-            router.back();
             router.refresh();
+            router.back();
+
 
         } catch (error) {
             console.log(error);
