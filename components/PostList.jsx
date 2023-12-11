@@ -29,8 +29,6 @@ const fetchAllPosts = async (board) => {
 export default async function PostList({ board = '' }) {
 
     const { post } = await fetchAllPosts(boardListMap[board]);
-
-
     // const newBoard = board === ''
     //     ? ''
     //     : boardListMap[board];
